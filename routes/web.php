@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -60,3 +62,18 @@ Route::group([
     })->name('master');
 
 });
+
+
+//CONTROLLERS
+
+Route::get('/produtos', [ProdutoController::class, 'index']);
+
+//CONTROLLERS COM PARÂMETROS
+
+Route::get('/produtos/{id?}', [ProdutoController::class, 'show']);
+
+//CONTROLLERS RESOURCE: Controllers que já vem com uma estrutura construída para funcionalidades CRUD.
+// Esse controller resource é criado com o seguinte comando: php artisan make:controller NomeController --resource
+// Esse tipo de controller é ótimo para trabalhar com a manipulação de dados.
+
+Route::resource('/clients', ClientController::class);
