@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')->unique(); // o unique() faz com que um e-mail seja referido a um único usuário. Ou seja, ele proibe que dois usuários tenham o mesmo e-mail.
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->rememberToken(); //útil para trabalhar com o recuperação de senha.
             $table->timestamps();
         });
 

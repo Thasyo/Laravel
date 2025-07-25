@@ -5,3 +5,5 @@
 - [ROTAS](./documentations/ROUTING.md)
 
 - [CONTROLLERS](./documentations/CONTROLLERS.md)
+
+- [MODELS](./documentations/MODELS.md)
