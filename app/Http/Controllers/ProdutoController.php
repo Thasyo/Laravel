@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
-    public function index(): string {
-        $produtos = Produto::all();
-        return dd($produtos); // a função "dd()" é uma junção do vardump() com o die()
+    public function index(): View {
+        $produtos = Produto::paginate(6);
+        return view('site.home',compact('produtos'));
     }
 
     public function show(int $id = 0): string {

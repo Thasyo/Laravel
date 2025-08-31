@@ -19,5 +19,7 @@
 </head>
 <body>
     <h1 class="font-medium underline">Empresa</h1>
+    <p>Nome: {{ $dados[0] }}</p>
+    <p>Idade: {{ $dados[1] }}</p>
 </body>
 </html>
