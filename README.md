@@ -7,3 +7,7 @@
 - [CONTROLLERS](./documentations/CONTROLLERS.md)
 
 - [MODELS](./documentations/MODELS.md)
+
+- [VIEWS](./documentations/VIEWS.md)
+
+- [MATERIALIZE](./documentations/MATERIALIZE.md)
