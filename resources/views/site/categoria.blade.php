@@ -2,7 +2,7 @@
 @section('title', 'HOME')
 @section('conteudo')
 
-    <h3 class="row container center">Nome da Categoria</h3>
+    <h3 class="row container center">{{$categoria->nome}}</h3>
 
     <div class="row container center">
         @foreach ($produtos as $item)
