@@ -13,16 +13,31 @@ class LoginController extends Controller
             $credenciais = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required']
+            ], [
+                'email.email' => 'Email digitado não é válido!',
+                'email.required' => 'Email é obrigatório!',
+                'password.required' => 'A senha é obrigatória!'
             ]);
 
             if(Auth::attempt($credenciais)){
                 $request->session()->regenerate();
-                return redirect()->intended('site.index');
+                return redirect()->intended(route('admin.dashboard'));
             }else{
-                return redirect()->back()->with('error', 'Processo de Login Falhou!');
+                return redirect()->back()->with('error', 'Não existe usuário com essas credenciais!');
             }
         } catch (\Throwable $e) {
             return redirect()->back()->with('error', 'E-mail ou senha inválidos!');
+        }
+    }
+
+    public function logout(Request $request) {
+        try{
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect(route('site.index'));
+        }catch(\Throwable $e){
+            return redirect()->back()->with('error', 'Não foi possível sair da sua conta!');
         }
     }
 }

@@ -16,13 +16,28 @@
             <li><a href="{{route('site.categoria', $categoria->id)}}">{{$categoria->nome}}</a></li>
         @endforeach
     </ul>
+        <!-- Dropdown Structure -->
+    <ul id='dropdown2' class='dropdown-content'> 
+            <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+            <li><a href='{{route('login.logout')}}'>Sair</a></li>
+    </ul>
     <nav>
         <div class="nav-wrapper container">
-        <a href="{{route('site.index')}}" class="brand-logo left">First Project</a>
-        <ul id="nav-mobile" class="right">
+        <a href="{{route('site.index')}}" class="brand-logo center">First Project</a>
+        <ul id="nav-mobile" class="left">
             <li><a class='dropdown-trigger' href='#' data-target='dropdown1'>Categorias<i class="material-icons right">add</i></a></li>
             <li><a href='{{route('site.carrinho')}}'>Carrinho <span class="new badge blue" data-badge-caption="">{{\Cart::getContent()->count()}}</span></a></li>
-        </ul>
+        </ul> 
+            @auth
+                <ul id="nav-mobile" class="right">
+                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Olá, {{auth()->user()->name}}</a></li>
+                </ul>
+            @else
+                <ul id="nav-mobile" class="right">
+                    <li><a href='{{route('login.form')}}'>Fazer Login</a></li>
+                </ul>
+            @endauth
+
         </div>
     </nav>
 

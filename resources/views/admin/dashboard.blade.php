@@ -1,0 +1,1 @@
+<h1>{{auth()->user()->name}}, aqui está seu dashboard.</h1>
